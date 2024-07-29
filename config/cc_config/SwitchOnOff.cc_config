@@ -1,0 +1,51 @@
+zw_cc_binaryswitch:
+  binary_switches:
+    - endpoint: 0
+
+zw_cc_notification:
+  notifications:
+    - type: NOTIFICATION_TYPE_WATER_ALARM
+      endpoint: 0
+      agi_profile:
+        - profile_MS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL
+        - profile_LS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL_LIFELINE
+      state_events:
+        - NOTIFICATION_EVENT_WATER_ALARM_SENSOR_STATUS_LEAK_DETECTED
+        - NOTIFICATION_EVENT_WATER_ALARM_WATER_FLOW_ALARM_STATUS
+    - type: NOTIFICATION_TYPE_WEATHER_ALARM
+      endpoint: 0
+      agi_profile:
+        - profile_MS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL
+        - profile_LS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL_LIFELINE
+      state_events:
+        - NOTIFICATION_EVENT_WEATHER_ALARM_FREEZE_ALARM
+    - type: NOTIFICATION_TYPE_HOME_MONITORING
+      endpoint: 0
+      agi_profile:
+        - profile_MS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL
+        - profile_LS: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_GENERAL_LIFELINE
+      state_events:
+        - NOTIFICATION_EVENT_HOME_MONITORING_HOME_OCCUPIED
+
+zw_cc_agi:
+  endpoints:
+    - endpoint: 0
+      groups:
+        - name: Water Alarm Set
+          profile_msb: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_NOTIFICATION
+          profile_lsb: NOTIFICATION_REPORT_WATER_V8
+          commands:
+            - command_class: COMMAND_CLASS_BASIC
+              command: BASIC_SET
+        - name: Weather Alarm Set
+          profile_msb: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_NOTIFICATION
+          profile_lsb: NOTIFICATION_REPORT_WEATHER_ALARM_V8
+          commands:
+            - command_class: COMMAND_CLASS_BASIC
+              command: BASIC_SET
+        - name: Home Monitoring Set
+          profile_msb: ASSOCIATION_GROUP_INFO_REPORT_PROFILE_NOTIFICATION
+          profile_lsb: NOTIFICATION_REPORT_HOME_MONITORING_V8
+          commands:
+            - command_class: COMMAND_CLASS_BASIC
+              command: BASIC_SET
